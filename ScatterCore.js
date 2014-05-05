@@ -3,5 +3,5 @@ function classof(obj) {
 		return "Null";
 	if (obj == undefined) 
 		return "Undefined";
-	return Object.prototype.toString.call(obj).splice(8, -1);
+	return Object.prototype.toString.call(obj).slice(8, -1);
 }
