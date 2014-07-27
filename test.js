@@ -3,4 +3,4 @@
  * @author kaidi.ykd
  */
 
-console.log("hello");
+console.log("hello, js");
