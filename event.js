@@ -4,6 +4,8 @@
  */
 
 
+define()
+
 var Pubsub = {
     handlers: {}
 };
