@@ -17,6 +17,24 @@ define(function() {
         this.handlers[eventType].push(handler);
     };
 
+    Pubsub.off = function(eventType, handler) {
+        if (this.handlers[eventType] == undefined) {
+            throw new Error("event: '" + eventType.toString() + "' has not been registered")
+        }
+        if (handler == undefined) {
+            this.handlers[eventType] = [];
+            delete this.handlers[eventType];
+        } else {
+            for (var i = 0; i < this.handlers[eventType].length; i++) {
+                if (handler == this.handlers[eventType][i]) {
+                    this.handlers[eventType][i] = null;
+                    this.handlers[eventType].splice(i, 1);
+                    break;
+                }
+            }
+        }
+    };
+
     Pubsub.emit = function(eventType) {
         var handlerArgs = Array.prototype.slice.call(arguments, 1);
         for (var i = 0; i < this.handlers[eventType].length; i++) {
