@@ -20,8 +20,29 @@ define(function() {
         return diffs;
     };
 
+    var rand_permutation = function(array) {
+        var index = [];
+        for (var i = 0; i < array.length; i++) {
+            index[i] = i;
+        }
+
+        for (var k = 1; k < index.length; k++) {
+            var rid = Math.floor(Math.random() * (index.length - k)) + k;
+            var temp = index[k - 1];
+            index[k - 1] = index[rid];
+            index[rid] = temp;
+        }
+
+        var result = [];
+        for (var j = 0; j < array.length; j++) {
+            result[j] = array[index[j]];
+        }
+        return result;
+    };
+
     return {
-        rmDuplicate: remove_duplication
+        rmDuplicate: remove_duplication,
+        randPermutaion: rand_permutation
     }
 });
 
