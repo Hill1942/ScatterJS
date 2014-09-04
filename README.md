@@ -1,4 +1,4 @@
 ScatterJS
 =========
 
-A Javascript util lib, which focus on algorithms
+A Javascript util lib
