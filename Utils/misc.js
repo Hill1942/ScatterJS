@@ -4,7 +4,7 @@
  */
 
 define(function() {
-    var remove_duplication = function(array) {
+    var remove_duplication1 = function(array) {
         var diffs = [];
         diffs.push(array[0]);
         for (var i = 1; i < array.length; i++) {
@@ -14,11 +14,38 @@ define(function() {
                 }
                 if (j == diffs.length - 1) {
                     diffs.push(array[i]);
+                    break;
                 }
             }
         }
         return diffs;
     };
+
+    var remove_duplication2 = function(array) {
+        var diffs = [];
+        diffs.push(array[0]);
+        for (var i = 1; i < array.length;) {
+            for (var j = 0; j < diffs.length; j++) {
+                if (array[i] == diffs[j]) {
+                    array.splice(i, 1);
+                    break;
+                }
+                if (j == diffs.length - 1) {
+                    diffs.push(array[i]);
+                    i++;
+                    break;
+                }
+            }
+        }
+    };
+
+    var remove_duplication = function(array, isNew) {
+        if (isNew) {
+            return remove_duplication1(array);
+        } else {
+            return remove_duplication2(array);
+        }
+    }
 
     var rand_permutation = function(array) {
         var index = [];
